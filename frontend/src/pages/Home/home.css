@@ -67,3 +67,29 @@
 .book-card button:hover {
   background-color: #b3874f;
 }
+
+@media (max-width: 600px) {
+  .book-grid,
+  .catalog-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .book-card,
+  .catalog-card {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  .book-card img,
+  .catalog-card img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .book-card button,
+  .catalog-card button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
