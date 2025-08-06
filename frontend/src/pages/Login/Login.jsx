@@ -36,13 +36,28 @@ function Login() {
       <h1>Iniciar sesión</h1>
       <form onSubmit={handleSubmit}>
         <input
-          type="email"
-          name="email"
-          placeholder="Correo"
-          value={form.email}
+          type="password"
+          name="password"
+          placeholder="Contraseña"
+          value={form.password}
           onChange={handleChange}
         />
+
         {errors.email && <p>{errors.email}</p>}
 
         <input
           type="password"
+          name="password"
+          placeholder="Contraseña"
+          value={form.password}
+          onChange={handleChange}
+        />
+        {errors.password && <p>{errors.password}</p>}
+
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+  )
+}
+
+export default Login
