@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
+import ReviewForm from '../../components/ReviewForm'
+import ReviewList from '../../components/ReviewList'
 import './BookDetail.css'
 
 function BookDetail() {
@@ -7,6 +9,10 @@ function BookDetail() {
   const [book, setBook] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const token = localStorage.getItem('token')
+
+  // Protección de ruta
+  if (!token) return <Navigate to="/login" />
 
   useEffect(() => {
     fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
@@ -33,6 +39,14 @@ function BookDetail() {
       {info.imageLinks?.thumbnail && (
         <img src={info.imageLinks.thumbnail} alt={info.title} className="bookImage" />
       )}
+
+      {/* Reseñas simuladas (solo visual, no funcional aún) */}
+      <h3>Reseñas</h3>
+      <p>No hay reseñas aún.</p>
+
+      {/* Formulario de reseña (no guarda nada aún) */}
+      <ReviewForm bookId={book.id} />
+      <ReviewList bookId={book._id} />
     </div>
   )
 }

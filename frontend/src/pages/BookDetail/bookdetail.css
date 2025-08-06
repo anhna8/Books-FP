@@ -31,3 +31,35 @@
   max-width: 200px;
   border-radius: 4px;
 }
+
+.review-list {
+  background-color: #fdf6e3;
+  border: 1px solid #d8cfc0;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 8px;
+  font-family: 'Georgia', serif;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.review-list h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #5a4632;
+}
+
+.review-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.review-list li {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed #cbb89d;
+  color: #3e2f1c;
+}
+
+.review-list strong {
+  color: #8b5e3c;
+}
