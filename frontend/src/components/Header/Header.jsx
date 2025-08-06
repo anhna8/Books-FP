@@ -1,18 +1,25 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 
-function Header () {
+function Header() {
   const { user, logout } = useAuth()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login')
+  }
 
   return (
-    <header>
-      <nav>
+    <header style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
+      <nav style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <Link to="/">Inicio</Link>
         <Link to="/catalog">Catálogo</Link>
+
         {user ? (
           <>
             <span>Hola, {user.name}</span>
-            <button onClick={logout}>Cerrar sesión</button>
+            <button onClick={handleLogout}>Cerrar sesión</button>
           </>
         ) : (
           <>
