@@ -1,0 +1,40 @@
+.catalogContainer {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.catalogTitle {
+  font-family: 'Georgia', serif;
+  font-size: 2.2rem;
+  color: #3a3a3a;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.catalogList {
+  list-style: none;
+  padding: 0;
+}
+
+.catalogItem {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.catalogItem a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.catalogItem a:hover {
+  text-decoration: underline;
+}

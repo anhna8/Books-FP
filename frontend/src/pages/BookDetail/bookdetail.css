@@ -1,0 +1,33 @@
+.bookDetailContainer {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #fffefc;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.bookTitle {
+  font-size: 2rem;
+  font-family: 'Georgia', serif;
+  color: #4a3f35;
+  margin-bottom: 0.5rem;
+}
+
+.bookAuthor {
+  font-size: 1.2rem;
+  color: #6a5d4d;
+  margin-bottom: 1rem;
+}
+
+.bookDescription {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.bookImage {
+  max-width: 200px;
+  border-radius: 4px;
+}
