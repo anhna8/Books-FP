@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import './ReviewList.css'
 
 export default function ReviewList({ bookId }) {
   const [reviews, setReviews] = useState([])
@@ -8,7 +9,7 @@ export default function ReviewList({ bookId }) {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await axios.get(`/api/reviews/${bookId}`);
+        const res = await axios.get(`/api/reviews/${bookId}`)
         setReviews(res.data)
       } catch (err) {
         console.error('Error al cargar reseñas:', err)
@@ -23,15 +24,22 @@ export default function ReviewList({ bookId }) {
   if (reviews.length === 0) return <p>No hay reseñas aún.</p>
 
   return (
-    <div>
+    <div className="review-list">
       <h3>Reseñas</h3>
-      <ul>
+      <div className="review-grid">
         {reviews.map((r) => (
-          <li key={r._id}>
-            <strong>{r.rating}⭐</strong> — {r.comment}
-          </li>
+          <div key={r._id} className="review-card">
+            {r.book?.image && (
+              <img src={r.book.image} alt="Portada" className="review-image" />
+            )}
+            <div className="review-content">
+              <p className="review-stars">{'⭐'.repeat(r.rating)}</p>
+              <p className="review-comment">“{r.comment}”</p>
+              <p className="review-user">— {r.user?.name || 'Anónimo'}</p>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }

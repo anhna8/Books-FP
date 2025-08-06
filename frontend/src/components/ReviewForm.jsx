@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
+import './ReviewForm.css'
 
-export default function ReviewForm( { bookId }) {
+export default function ReviewForm({ bookId }) {
   const [comment, setComment] = useState('')
   const [rating, setRating] = useState(5)
   const token = localStorage.getItem('token')
@@ -22,7 +23,7 @@ export default function ReviewForm( { bookId }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="review-form">
       <textarea
         value={comment}
         onChange={e => setComment(e.target.value)}

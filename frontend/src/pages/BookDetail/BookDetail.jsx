@@ -4,51 +4,39 @@ import ReviewForm from '../../components/ReviewForm'
 import ReviewList from '../../components/ReviewList'
 import './BookDetail.css'
 
-function BookDetail() {
+export default function BookDetail() {
   const { id } = useParams()
   const [book, setBook] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
   const token = localStorage.getItem('token')
 
-  // Protección de ruta
-  if (!token) return <Navigate to="/login" />
-
   useEffect(() => {
-    fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
-      .then((res) => {
-        if (!res.ok) throw new Error('Error al cargar el libro')
-        return res.json()
-      })
-      .then((data) => setBook(data))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false))
+    const fetchBook = async () => {
+      try {
+        const res = await fetch(`/api/books/${id}`)
+        const data = await res.json()
+        setBook(data)
+      } catch (err) {
+        console.error("Error al cargar libro:", err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchBook()
   }, [id])
 
+  if (!token) return <Navigate to="/login" />
   if (loading) return <p>Cargando libro...</p>
-  if (error) return <p>{error}</p>
-  if (!book) return <p>No se encontró el libro</p>
-
-  const info = book.volumeInfo
+  if (!book) return <p>Libro no encontrado.</p>
 
   return (
-    <div className="bookDetailContainer">
-      <h1 className="bookTitle">{info.title}</h1>
-      <p className="bookAuthor">Autor(es): {info.authors?.join(', ')}</p>
-      <p className="bookDescription">{info.description || 'Sin descripción disponible.'}</p>
-      {info.imageLinks?.thumbnail && (
-        <img src={info.imageLinks.thumbnail} alt={info.title} className="bookImage" />
-      )}
+    <div className="book-detail">
+      <h2>{book.title}</h2>
+      <img src={book.image} alt={book.title} />
+      <p>{book.description}</p>
 
-      {/* Reseñas simuladas (solo visual, no funcional aún) */}
-      <h3>Reseñas</h3>
-      <p>No hay reseñas aún.</p>
-
-      {/* Formulario de reseña (no guarda nada aún) */}
-      <ReviewForm bookId={book.id} />
+      <ReviewForm bookId={book._id} />
       <ReviewList bookId={book._id} />
     </div>
   )
 }
-
-export default BookDetail

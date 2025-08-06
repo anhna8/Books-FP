@@ -63,3 +63,47 @@
 .review-list strong {
   color: #8b5e3c;
 }
+.review-form {
+  background-color: #fefcf9;
+  border: 1px solid #d8cfc0;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 8px;
+  font-family: 'Georgia', serif;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.review-form textarea {
+  width: 100%;
+  height: 80px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #cbb89d;
+  border-radius: 4px;
+  resize: vertical;
+  font-family: 'Georgia', serif;
+  background-color: #fffaf3;
+}
+
+.review-form select {
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: 1px solid #cbb89d;
+  background-color: #fffaf3;
+  font-family: 'Georgia', serif;
+  margin-bottom: 1rem;
+}
+
+.review-form button {
+  background-color: #8b5e3c;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Georgia', serif;
+  cursor: pointer;
+}
+
+.review-form button:hover {
+  background-color: #6f4a2e;
+}

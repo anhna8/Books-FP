@@ -23,15 +23,29 @@ function Home() {
       <h1 className="title">Libros destacados</h1>
       {loading && <p>Cargando...</p>}
       {error && <p>{error}</p>}
-      <ul className="list">
-        {books.map((book) => (
-          <li key={book.id} className="listItem">
-            <Link to={`/book/${book.id}`}>
-              {book.volumeInfo.title} — {book.volumeInfo.authors?.join(', ')}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className="book-grid">
+        {books.map((book) => {
+          const info = book.volumeInfo
+          const image = info.imageLinks?.thumbnail || 'https://via.placeholder.com/128x195?text=Sin+imagen'
+          const title = info.title || 'Sin título'
+          const author = info.authors?.join(', ') || 'Autor desconocido'
+          const rating = Math.floor(info.averageRating || 0)
+
+          return (
+            <div key={book.id} className="book-card">
+              <Link to={`/book/${book.id}`}>
+                <img src={image} alt={title} />
+                <h3>{title}</h3>
+                <p>{author}</p>
+                <p className="stars">
+                  {rating > 0 ? '⭐'.repeat(rating) : 'Sin calificación'}
+                </p>
+              </Link>
+              <button>Quiero leerlo</button>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
