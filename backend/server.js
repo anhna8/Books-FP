@@ -1,11 +1,27 @@
-import express from 'express'
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
+require('dotenv').config()
+
+const postRoutes = require('./routes/postRoutes')
+
 const app = express()
-const port = 3000
+const PORT = process.env.PORT || 3001
 
-app.get('/', (req, res) => {
-  res.send('holi, g40')
+// Middlewares
+app.use(cors())
+app.use(express.json())
+
+// Rutas
+app.use('/api/posts', postRoutes)
+
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  .then(() => {
+    console.log('📚 Conectado a MongoDB')
+    app.listen(PORT, () => console.log(`🚀 Servidor corriendo en puerto ${PORT}`))
+  })
+  .catch((err) => console.error('❌ Error al conectar a MongoDB:', err))
