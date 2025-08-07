@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "title": "Orgullo y prejuicio",
+    "author": "Jane Austen",
+    "rating": 4.8
+  },
+  {
+    "id": 2,
+    "title": "Cumbres borrascosas",
+    "author": "Emily Brontë",
+    "rating": 4.6
+  },
+  {
+  "title": "Jane Eyre",
+  "author": "Charlotte Brontë",
+  "rating": 4.7
+}
+]

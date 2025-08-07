@@ -1,22 +1,16 @@
 import express from 'express'
+import {
+  getBooks,
+  getBookById,
+  createBook,
+  deleteBook
+} from '../controllers/bookController.js'
+
 const router = express.Router()
 
-// Ruta GET para /api/books
-router.get('/', (req, res) => {
-  res.json([
-    {
-      id: 1,
-      title: 'Orgullo y prejuicio',
-      author: 'Jane Austen',
-      rating: 4.8
-    },
-    {
-      id: 2,
-      title: 'Cumbres borrascosas',
-      author: 'Emily Brontë',
-      rating: 4.6
-    },
-  ])
-})
+router.get('/', getBooks)
+router.get('/:id', getBookById)
+router.post('/', createBook)
+router.delete('/:id', deleteBook)
 
 export default router
